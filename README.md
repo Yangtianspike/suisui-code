@@ -2,7 +2,7 @@
 
 从零构建的 AI 编程助手（AI Coding Agent），跑在终端里。
 
-**716 项测试 | 15 个迭代章节 | 3 个 LLM 协议 | 6 个核心工具 | 149 个源文件**
+**716 项测试 | 15 个迭代章节 | 3 个 LLM 协议 | 6 个核心工具 | 160+ 个源文件**
 
 ---
 
@@ -37,8 +37,8 @@ SuisuiCode 是一个运行在终端中的 AI 编程助手，类似 Claude Code�
 ### 安装
 
 ```bash
-git clone https://github.com/Yangtianspike/suisuicode.git
-cd suisuicode
+git clone https://github.com/Yangtianspike/suisui-code.git
+cd suisui-code
 uv sync
 ```
 
