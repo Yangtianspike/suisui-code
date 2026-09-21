@@ -1,0 +1,23 @@
+# MCP server 配置示例
+# 项目级放 <root>/.suisuicode.yaml；用户级放 ~/.suisuicode/config.yaml。
+# 同名 server 项目级完整覆盖用户级。
+# env / headers 的值支持 ${VAR} 从宿主环境变量展开；command/args 不展开。
+
+mcp_servers:
+  github:
+    type: stdio
+    command: npx
+    args: ["-y", "@modelcontextprotocol/server-github"]
+    env:
+      GITHUB_TOKEN: "${GITHUB_TOKEN}"
+
+  local-sqlite:
+    type: stdio
+    command: python
+    args: ["-m", "mcp_server_sqlite", "--db", "./data.db"]
+
+  example-http:
+    type: http
+    url: "https://mcp.example.com/mcp"
+    headers:
+      Authorization: "Bearer ${EXAMPLE_TOKEN}"

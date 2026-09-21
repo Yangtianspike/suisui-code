@@ -1,0 +1,24 @@
+# SuisuiCode 配置示例
+# 复制此文件到 ~/.suisuicode/config.yaml 并填入真实值
+
+providers:
+  - name: claude
+    protocol: anthropic
+    model: claude-opus-4-5
+    base_url: https://api.anthropic.com
+    api_key: sk-ant-your-key-here
+    thinking: false
+
+  # - name: gpt
+  #   protocol: openai
+  #   model: gpt-4o
+  #   base_url: https://api.openai.com/v1
+  #   api_key: sk-your-key-here
+  #   thinking: false
+
+  # - name: deepseek
+  #   protocol: deepseek
+  #   model: deepseek-chat
+  #   base_url: https://api.deepseek.com
+  #   api_key: sk-your-deepseek-key-here
+  #   thinking: false

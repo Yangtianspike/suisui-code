@@ -1,0 +1,23 @@
+# SuisuiCode 权限配置示例
+#
+# 三层配置文件（优先级：本地 > 项目 > 用户）：
+#   ~/.suisuicode/settings.yaml            — 用户级
+#   <project>/.suisuicode/settings.yaml     — 项目级（可提交到 git）
+#   <project>/.suisuicode/settings.local.yaml — 本地级（gitignore，人在回路"永久"写入此文件）
+#
+# 规则格式：Tool(pattern) 或 Tool
+#   友好名：Bash / Read / Write / Edit / Glob / Grep
+#   命令执行类比对命令串，文件类工具比对项目相对路径
+#   * 匹配任意字符（段内），** 匹配跨段（仅文件路径）
+
+default_mode: default  # default | acceptEdits | plan | bypassPermissions
+
+permissions:
+  allow:
+    # - Bash(git status)       # 精确放行
+    # - Bash(git *)            # glob 放行所有 git 子命令
+    # - Write(src/**)          # 放行 src/ 下任意路径写入
+  deny:
+    # - Bash(rm *)             # 拦截所有 rm 命令
+    # - Read(.env)             # 拦截读取 .env 文件
+    # - Write(.env)            # 拦截写入 .env 文件

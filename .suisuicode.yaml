@@ -1,0 +1,9 @@
+# MCP server 配置（ch07）
+# 项目级放 <root>/.suisuicode.yaml；同名 server 完整覆盖用户级。
+# env / headers 的值支持 ${VAR} 从宿主环境展开。
+
+mcp_servers:
+  context7:
+    type: stdio
+    command: npx
+    args: ["-y", "@upstash/context7-mcp"]

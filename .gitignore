@@ -1,0 +1,25 @@
+.suisuicode/config.yaml
+.suisuicode/settings.local.yaml
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+dist/
+*.egg-info/
+.suisuicode/sessions/
+.suisuicode/memory/
+.suisuicode/teams/
+
+# ch14: Worktree 隔离副本（仅供 SubAgent 与手动管理使用）
+.suisuicode/worktrees/
+.suisuicode/worktree_session.json
+
+# 本机开发环境 / 个人数据
+.claude/
+.codebuddy/
+.suisuicode/history
+
+# 内部开发文档与残留
+demo_sessions/
+allChapter_spec_md/
+progress.md

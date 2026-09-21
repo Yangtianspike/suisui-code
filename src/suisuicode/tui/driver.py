@@ -1,0 +1,32 @@
+from __future__ import annotations
+
+import os
+import sys
+
+if sys.platform == "win32":
+    from textual.drivers.windows_driver import WindowsDriver as _BaseDriver
+else:
+    from textual.drivers.linux_driver import LinuxDriver as _BaseDriver
+
+
+class NoAltScreenDriver(_BaseDriver):
+    """跳过备用屏（alternate screen）的 driver，让输出保留在主终端的
+    滚动回看（scrollback）区域中，方便用户向上翻阅历史交互记录。
+    自动根据平台选择 LinuxDriver 或 WindowsDriver 作为基类。"""
+
+    def start_application_mode(self):
+        try:
+            rows = os.get_terminal_size().lines
+        except OSError:
+            rows = 24
+        sys.stdout.write("\n" * rows)
+        sys.stdout.flush()
+        super().start_application_mode()
+
+    def write(self, data: str) -> None:
+        if "\x1b[?1049h" in data:
+            data = data.replace("\x1b[?1049h", "")
+        if "\x1b[?1049l" in data:
+            data = data.replace("\x1b[?1049l", "")
+        if data:
+            super().write(data)

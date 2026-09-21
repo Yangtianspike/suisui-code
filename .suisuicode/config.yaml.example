@@ -1,0 +1,40 @@
+# ============================================================
+# SuisuiCode 配置文件
+# ============================================================
+#
+# 项目指令文件（ch09）：
+#   SuisuiCode 启动时按优先级加载三层 SUISUICODE.md：
+#   ① <project_root>/SUISUICODE.md          — 项目级（最高优先级）
+#   ② <project_root>/.suisuicode/SUISUICODE.md — 项目配置级
+#   ③ ~/.suisuicode/SUISUICODE.md              — 用户级（最低优先级）
+#   支持 @include 引用其他文件，嵌套深度上限 5 层，含环路检测。
+#
+# 自动笔记与记忆（ch09）：
+#   笔记存储在 .suisuicode/memory/（项目级）和 ~/.suisuicode/memory/（用户级）。
+#   每 5 轮对话自动提取值得记住的信息，也支持"记住 xxx"显式触发。
+#   索引文件 MEMORY.md 注入系统提示，让 Agent 跨会话保持记忆。
+#
+# 会话存档（ch09）：
+#   对话历史以 JSONL 格式保存在 .suisuicode/sessions/<session_id>/。
+#   启动时自动清理 30 天前的过期会话。
+#   使用 /resume 命令浏览和恢复历史会话。
+#
+# ============================================================
+
+providers:
+  # Anthropic Claude（含 extended thinking）
+  - name: claude
+    protocol: anthropic
+    api_key: sk-ant-your-key-here
+    model: claude-opus-4-5
+    thinking: false           # 改为 true 开启扩展思考
+    # context_window 单位 token，可选；未配置时按 protocol 默认（anthropic 200000、openai 128000）
+    context_window: 200000
+
+  # OpenAI 或兼容端点（注释掉上面、取消注释下面）
+  # - name: gpt
+  #   protocol: openai
+  #   api_key: sk-your-key-here
+  #   model: gpt-4o
+  #   base_url: https://api.openai.com/v1   # 可替换为兼容端点
+  #   context_window: 128000
